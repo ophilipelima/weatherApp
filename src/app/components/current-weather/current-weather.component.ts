@@ -9,5 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class CurrentWeatherComponent {
   @Input() city!: string;
-  @Input() temperature!: number;
+  @Input() temperature?: number;
 }

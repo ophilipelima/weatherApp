@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private weatherService: WeatherapiService){}
 
   city = 'Berlim, Alemanha';
-  temperature = 0;
+  temperature?: number;
   wind = 0;
   humidity = 46;
   precipitation = 0; 
@@ -30,11 +30,13 @@ export class HomeComponent implements OnInit {
     this.weatherService.getWeather(lat, long).subscribe(
       {
         next: (resposta) => {
-          this.humidity = resposta.relative_humidity_2;
-          this.precipitation = resposta.precipitation;
-          this.wind = resposta.wind_speed_10m;
-          this.isDay = resposta.is_day;
-          this.temperature = resposta.temperature_2m;
+        this.temperature = resposta.current?.temperature_2m;
+        this.humidity = resposta.current?.relative_humidity_2m;
+        this.wind = resposta.current?.wind_speed_10m;
+        this.precipitation = resposta.current?.precipitation;
+        this.isDay = resposta.current?.is_day;
+          console.log('RESPOSTA COMPLETA:', resposta);
+          console.log('TEMPERATURA:', resposta.current?.temperature_2m);
         },
 
         error: (err) => {
@@ -46,3 +48,4 @@ export class HomeComponent implements OnInit {
 
   }
 }
+

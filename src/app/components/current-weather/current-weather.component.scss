@@ -1,0 +1,17 @@
+.container{
+    background-image: url('../../../assets/images/bg-today-large.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 250px;
+    width: 700px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1{
+    color: white;
+}
+

@@ -17,7 +17,7 @@ export class WeatherapiService {
       params:{
         latitude: lat,
         longitude: lon,
-        current_weather: true,
+        current: 'temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation,is_day',
         hourly: 'temperature_2m',
         daily: 'temperature_2m_max,temperature_2m_min',
         timezone: 'auto'
