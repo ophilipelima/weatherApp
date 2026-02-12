@@ -12,7 +12,18 @@ export class WeatherapiService {
 
   private baseUrl = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=temperature_2m_max&hourly=temperature_2m,relative_humidity_2m,rain,snowfall,precipitation,precipitation_probability,apparent_temperature&current=temperature_2m,relative_humidity_2m,wind_speed_10m,wind_direction_10m,wind_gusts_10m,precipitation,is_day';
 
-
+  getWeather(lat: number, lon: number): Observable<any>{
+    return this.http.get(this.baseUrl, {
+      params:{
+        latitude: lat,
+        longitude: lon,
+        current_weather: true,
+        hourly: 'temperature_2m',
+        daily: 'temperature_2m_max,temperature_2m_min',
+        timezone: 'auto'
+      }
+    });
+  }
 
   }
 
