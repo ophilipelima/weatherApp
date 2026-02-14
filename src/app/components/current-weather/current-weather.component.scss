@@ -1,3 +1,21 @@
+
+
+@font-face {
+    font-family: 'Fonte-projeto';
+    src: url('../../../assets/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz\,wdth\,wght.ttf');
+}
+
+@font-face {
+    font-family: 'fonte-2';
+    src: url('../../../assets/fonts/DM_Sans/DMSans-Italic-VariableFont_opsz\,wght.ttf');
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'fonte-2';
+}
+
 .container{
     background-image: url('../../../assets/images/bg-today-large.svg');
     background-size: cover;
@@ -5,13 +23,26 @@
     background-repeat: no-repeat;
     height: 250px;
     width: 700px;
-    border-radius: 30px;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-h1{
+h1, p{
     color: white;
+}
+
+.temperatura{
+    font-size: 75px;
+    margin: 0px 20px;
+}
+
+.cidadeEdata{
+    margin: 0px 20px;
+}
+
+.cidade{
+    margin-bottom: 5px;
 }
 

@@ -1,5 +1,9 @@
 <div class="container">
-    <h1 class="cidade">{{city}}</h1>
+    <div class="cidadeEdata">
+        <h1 class="cidade">{{city}}</h1>
+        <p>{{ dtAtual | date:'EEEE, MMM d, y':'':'en-US' }}</p>
+    </div>
     <h1 class="temperatura">{{temperature}}°</h1>
 </div>
-<!-- <img src="../../../assets/images/bg-today-large.svg" alt=""> -->
+
+
