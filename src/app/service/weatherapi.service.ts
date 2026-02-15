@@ -10,7 +10,7 @@ export class WeatherapiService {
 
   constructor(private http: HttpClient) { }
 
-  private baseUrl = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=temperature_2m_max&hourly=temperature_2m,relative_humidity_2m,rain,snowfall,precipitation,precipitation_probability,apparent_temperature&current=temperature_2m,relative_humidity_2m,wind_speed_10m,wind_direction_10m,wind_gusts_10m,precipitation,is_day';
+  private baseUrl = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=temperature_2m_max,temperature_2m_min&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,wind_speed_10m';
 
   getWeather(lat: number, lon: number): Observable<any>{
     return this.http.get(this.baseUrl, {

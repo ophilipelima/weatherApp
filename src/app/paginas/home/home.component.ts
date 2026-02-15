@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherapiService } from '../../service/weatherapi.service';
 import { HeaderComponent } from '../../components/header/header.component';
 import { CurrentWeatherComponent } from '../../components/current-weather/current-weather.component';
+import { LoadingStateComponent } from '../../components/loading-state/loading-state.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, CurrentWeatherComponent],
+  imports: [HeaderComponent, CurrentWeatherComponent, LoadingStateComponent],
   templateUrl: './home.component.html',   
   styleUrl: './home.component.scss'
 })
@@ -14,12 +15,13 @@ export class HomeComponent implements OnInit {
 
   constructor(private weatherService: WeatherapiService){}
 
-  city = 'Berlin, Germany';
+  city = '';
   temperature?: number;
-  wind = 0;
-  humidity = 46;
-  precipitation = 0; 
-  isDay = 0;
+  wind?: number;
+  humidity?: number;
+  precipitation?: number; 
+  isDay?: number;
+  feelsLike?: number;
   
 
   ngOnInit(): void {
@@ -31,13 +33,14 @@ export class HomeComponent implements OnInit {
       {
         next: (resposta) => {
         this.temperature = Math.round(resposta[1].current?.temperature_2m);
-        this.humidity = resposta.current?.relative_humidity_2m;
-        this.wind = resposta.current?.wind_speed_10m;
-        this.precipitation = resposta.current?.precipitation;
-        this.isDay = resposta.current?.is_day;
+        this.humidity = resposta[1].current?.relative_humidity_2m;
+        this.wind = Math.round(resposta[1].current?.wind_speed_10m);
+        this.precipitation = resposta[1].current?.precipitation;
+        this.isDay = resposta[1].current?.is_day;
         this.city = resposta[1].timezone;
+        this.feelsLike = Math.round(resposta[1].current?.apparent_temperature);
+
         console.log('Resposta', resposta)
-        console.log('TEMPERATURA:', resposta.current?.temperature_2m);
         },
 
         error: (err) => {
