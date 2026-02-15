@@ -18,6 +18,34 @@
     justify-content: space-between;
 }
 
+@media (max-width: 699px) {
+    .container{
+        background-image: url('../../../assets/images/bg-today-small.svg') ;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 250px;
+        width: 375px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .temperatura{
+        display: flex;
+        text-align: end;
+    }
+    .cidadeEdata{
+        text-align: center;
+    }
+    
+    // .componente{
+    //     display: flex;
+    //     justify-content: center;
+    // }
+}
+
 h1, p{
     color: white;
 }
