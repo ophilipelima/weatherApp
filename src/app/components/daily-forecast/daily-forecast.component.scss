@@ -4,12 +4,15 @@
 
 p{
     color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 :host {
     display: inline-block;
     margin-right: 16px;
 }  
+
 .container{
     display: flex;
     flex-direction: row;
@@ -17,12 +20,15 @@ p{
 }
 
 .cardDia{
+    min-height: 145px;
     background-color: #242540;
     min-width: 90px;
-    height: 120px;
     border-radius: 10px;
     padding: 8px;
     border: 1px solid rgb(137, 109, 109);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .temperatura{
@@ -33,4 +39,10 @@ p{
 
 .diaSemana{
     text-align: center;
+}
+
+.icone{
+   width: 50px;
+   display :block;
+   margin: 0 auto;
 }

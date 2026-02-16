@@ -27,11 +27,10 @@ export class HomeComponent implements OnInit {
   feelsLike?: number;
 
   previsaoSemanal?: any[];
-  // weatherCode?: number; 
   
 
   ngOnInit(): void {
-    this.carregarTempo(-15.7797, -47.9297);
+    this.carregarTempo(40.7128, -74.0060);
   }
 
   carregarTempo(lat: number, long: number){
