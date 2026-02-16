@@ -3,9 +3,18 @@
     [city]="city"
     [temperature]="temperature">
 </app-current-weather>
+
 <app-loading-state
     [feelsLike]="feelsLike"
     [humidity]="humidity"
     [precipitation]="precipitation"
     [wind]="wind">
 </app-loading-state>
+
+<app-daily-forecast
+*ngFor="let dia of previsaoSemanal"
+[diaSemana]="dia.diaSemana"
+[temperaturaMax]="dia.temperaturaMax"
+[temperaturaMin]="dia.temperaturaMin"
+[weatherApp]="dia.weatherApp"> 
+</app-daily-forecast>

@@ -1,0 +1,36 @@
+*{
+    font-family: 'SansLigth';
+}
+
+p{
+    color: white;
+}
+
+:host {
+    display: inline-block;
+    margin-right: 16px;
+}  
+.container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.cardDia{
+    background-color: #242540;
+    min-width: 90px;
+    height: 120px;
+    border-radius: 10px;
+    padding: 8px;
+    border: 1px solid rgb(137, 109, 109);
+}
+
+.temperatura{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.diaSemana{
+    text-align: center;
+}

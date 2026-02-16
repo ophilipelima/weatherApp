@@ -3,11 +3,14 @@ import { WeatherapiService } from '../../service/weatherapi.service';
 import { HeaderComponent } from '../../components/header/header.component';
 import { CurrentWeatherComponent } from '../../components/current-weather/current-weather.component';
 import { LoadingStateComponent } from '../../components/loading-state/loading-state.component';
+import { DailyForecastComponent } from '../../components/daily-forecast/daily-forecast.component';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, CurrentWeatherComponent, LoadingStateComponent],
+  imports: [HeaderComponent, CurrentWeatherComponent, LoadingStateComponent, DailyForecastComponent, CommonModule],
   templateUrl: './home.component.html',   
   styleUrl: './home.component.scss'
 })
@@ -22,6 +25,9 @@ export class HomeComponent implements OnInit {
   precipitation?: number; 
   isDay?: number;
   feelsLike?: number;
+
+  previsaoSemanal?: any[];
+  // weatherCode?: number; 
   
 
   ngOnInit(): void {
@@ -39,8 +45,23 @@ export class HomeComponent implements OnInit {
         this.isDay = resposta[1].current?.is_day;
         this.city = resposta[1].timezone;
         this.feelsLike = Math.round(resposta[1].current?.apparent_temperature);
+        
+        this.previsaoSemanal = resposta[1].daily?.time.map((data: string, index: number) => {
+          
+          const dataObj = new Date(data);
+
+          return{
+            diaSemana: dataObj.toLocaleDateString('en-US', {weekday: 'short'}),
+            temperaturaMax: Math.round(resposta[1].daily?.temperature_2m_max[index]),
+            temperaturaMin: Math.round(resposta[1].daily?.temperature_2m_min[index]),
+            weatherCode: resposta[1].daily?.weather_code[index]
+          };
+
+        });
 
         console.log('Resposta', resposta)
+        console.log('Previsão semanal:', this.previsaoSemanal);
+
         },
 
         error: (err) => {

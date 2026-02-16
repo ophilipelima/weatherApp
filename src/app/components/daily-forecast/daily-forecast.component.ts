@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-daily-forecast',
@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './daily-forecast.component.scss'
 })
 export class DailyForecastComponent {
+  @Input() diaSemana?: string;
+  @Input() temperaturaMax?: number;
+  @Input() temperaturaMin?: number;
+  @Input() weatherApp?: number;
 
 }
