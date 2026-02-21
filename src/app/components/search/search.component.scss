@@ -1,4 +1,25 @@
-.input-icon {
-  background: url('../../../assets/images/icon-search.svg') no-repeat 8px center;
-  padding-left: 30px; /* espaço para o ícone */
+.pesquisa-container{
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.input-icon{
+    background: url('../../../assets/images/icon-search.svg') no-repeat;
+    padding-left: 30px;
+   
+}
+
+.pesquisa-container input{
+    background-color: #242540;
+    border-radius: 5px;
+    width: 30%;
+    
+}
+
+.pesquisa-container button{
+    cursor: grab;
+    // padding: 2vw 4vw; /* aumenta conforme a largura da tela diminui */ 
+    // font-size: 3vw; /* tamanho da fonte proporcional à largura da tela */ 
+    // transition: all 0.3s ease;
 }
