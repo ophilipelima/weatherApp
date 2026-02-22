@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-hourly-forecast',
@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './hourly-forecast.component.scss'
 })
 export class HourlyForecastComponent {
+  @Input() horario?: string;
+  @Input() temperatua?: number;
+  @Input() weatherCode?: number;
 
 }

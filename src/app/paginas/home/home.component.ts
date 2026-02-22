@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   feelsLike?: number;
 
   previsaoSemanal?: any[];
+  previsaoDiaria?: any[];
   
 
   ngOnInit(): void {
@@ -58,8 +59,20 @@ export class HomeComponent implements OnInit {
 
         });
 
+        this.previsaoDiaria = resposta[1].hourly?.time.map((hora: string, index: number) => {
+          
+          const horaObg = new Date(hora);
+
+          return{
+            horario: horaObg.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+            temperatura: Math.round(resposta[1].hourly?.temperature_2m[index]),
+            weatherCode: resposta[1].hourly?.weather_code[index]
+          }
+        })
+
         console.log('Resposta', resposta)
         console.log('Previsão semanal:', this.previsaoSemanal);
+        console.log('Previsão Diária', this.previsaoDiaria)
 
         },
 
