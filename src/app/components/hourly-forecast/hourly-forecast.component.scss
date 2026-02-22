@@ -1,0 +1,38 @@
+.horario {
+  background-color: #2a2b4f;
+  padding: 14px 16px;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  transition: 0.2s ease;
+}
+
+.horario:hover {
+  background-color: #34356a;
+}
+
+.horario > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+p {
+  color: white;
+  margin: 0;
+}
+
+.horaAtual {
+  font-weight: 500;
+}
+
+.temperatura {
+  font-weight: 600;
+}
+
+.icone {
+  width: 26px;
+}

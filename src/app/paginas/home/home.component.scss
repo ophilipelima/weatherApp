@@ -5,5 +5,45 @@
   background-color: #01012a; 
 }
 
+.hourly-wrapper {
+  background-color: #1c1d3a;
+  padding: 20px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 360px;
+  height: 600px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.hourly-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.hourly-header h2 {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.hourly-header select {
+  background-color: #2a2b4f;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.hourly-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
 
 

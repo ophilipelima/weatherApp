@@ -18,3 +18,21 @@
 [temperaturaMin]="dia.temperaturaMin"
 [weatherCode]="dia.weatherCode"> 
 </app-daily-forecast>
+
+<section class="hourly-wrapper">
+  <div class="hourly-header">
+    <h2>Hourly forecast</h2>
+    <select>
+      <option>Tuesday</option>
+    </select>
+  </div>
+
+  <div class="hourly-list">
+    <app-hourly-forecast
+      *ngFor="let hora of previsaoDiaria"
+      [horario]="hora.horario"
+      [temperatura]="hora.temperatura"
+      [weatherCode]="hora.weatherCode">
+    </app-hourly-forecast>
+  </div>
+</section>

@@ -4,13 +4,14 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { CurrentWeatherComponent } from '../../components/current-weather/current-weather.component';
 import { LoadingStateComponent } from '../../components/loading-state/loading-state.component';
 import { DailyForecastComponent } from '../../components/daily-forecast/daily-forecast.component';
+import { HourlyForecastComponent } from '../../components/hourly-forecast/hourly-forecast.component';
 import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, CurrentWeatherComponent, LoadingStateComponent, DailyForecastComponent, CommonModule],
+  imports: [HeaderComponent, CurrentWeatherComponent, LoadingStateComponent, DailyForecastComponent, CommonModule, HourlyForecastComponent],
   templateUrl: './home.component.html',   
   styleUrl: './home.component.scss'
 })
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
 
   previsaoSemanal?: any[];
   previsaoDiaria?: any[];
+  horaAtual = new Date();
   
 
   ngOnInit(): void {
@@ -59,15 +61,21 @@ export class HomeComponent implements OnInit {
 
         });
 
-        this.previsaoDiaria = resposta[1].hourly?.time.map((hora: string, index: number) => {
+        this.previsaoDiaria = resposta[1].hourly?.time.filter((hora: string) => {
+         const data = new Date(hora);
+
+         return data >= this.horaAtual
+         
+        }).slice(0, 8).map((hora: string, index: number) => {
           
           const horaObg = new Date(hora);
-
-          return{
-            horario: horaObg.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+          
+            return {
+            horario: horaObg.toLocaleTimeString('en-US', { hour: 'numeric', hour12: true }),
             temperatura: Math.round(resposta[1].hourly?.temperature_2m[index]),
             weatherCode: resposta[1].hourly?.weather_code[index]
           }
+          
         })
 
         console.log('Resposta', resposta)
