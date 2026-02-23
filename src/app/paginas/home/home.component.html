@@ -1,23 +1,38 @@
 <app-header></app-header> 
-<app-current-weather
-    [city]="city"
-    [temperature]="temperature">
-</app-current-weather>
 
-<app-loading-state
-    [feelsLike]="feelsLike"
-    [humidity]="humidity"
-    [precipitation]="precipitation"
-    [wind]="wind">
-</app-loading-state>
 
-<app-daily-forecast
-*ngFor="let dia of previsaoSemanal"
-[diaSemana]="dia.diaSemana"
-[temperaturaMax]="dia.temperaturaMax"
-[temperaturaMin]="dia.temperaturaMin"
-[weatherCode]="dia.weatherCode"> 
-</app-daily-forecast>
+<section class="content">
+    <div class="pt1">
+        <app-current-weather
+            [city]="city"
+            [temperature]="temperature">
+        </app-current-weather>
+
+        <section class="loading-component">
+             <app-loading-state class="loading-list"
+                [feelsLike]="feelsLike"
+                [humidity]="humidity"
+                [precipitation]="precipitation"
+                [wind]="wind">
+            </app-loading-state>
+        </section>
+       
+
+        <section class="daily-component">
+            <h1 class="daily-titulo">Daily forecast</h1>
+            <div class="daily-list">
+                <app-daily-forecast 
+                    *ngFor="let dia of previsaoSemanal"
+                    [diaSemana]="dia.diaSemana"
+                    [temperaturaMax]="dia.temperaturaMax"
+                    [temperaturaMin]="dia.temperaturaMin"
+                    [weatherCode]="dia.weatherCode"> 
+                </app-daily-forecast>
+            </div>
+            
+        </section>
+
+    </div>
 
 <section class="hourly-wrapper">
   <div class="hourly-header">
@@ -36,3 +51,5 @@
     </app-hourly-forecast>
   </div>
 </section>
+</section>
+

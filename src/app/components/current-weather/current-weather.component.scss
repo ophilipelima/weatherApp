@@ -12,14 +12,14 @@
     background-repeat: no-repeat;
     height: 250px;
     width: 100%;
-    max-width: 700px;
+    max-width: 750px;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-@media (max-width: 699px) {
+@media (max-width: 460px) {
     .container{
         background-image: url('../../../assets/images/bg-today-small.svg') ;
         background-size: cover;
@@ -29,8 +29,6 @@
         width: 375px;
         border-radius: 20px;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
         flex-wrap: wrap;
     }
     .temperatura{
@@ -41,10 +39,6 @@
         text-align: center;
     }
     
-    // .componente{
-    //     display: flex;
-    //     justify-content: center;
-    // }
 }
 
 h1, p{
