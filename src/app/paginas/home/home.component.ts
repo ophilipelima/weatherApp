@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherapiService } from '../../service/weatherapi.service';
+import { WeatherapiService } from '../../service/weather-api/weatherapi.service';
 import { HeaderComponent } from '../../components/header/header.component';
 import { CurrentWeatherComponent } from '../../components/current-weather/current-weather.component';
 import { LoadingStateComponent } from '../../components/loading-state/loading-state.component';
