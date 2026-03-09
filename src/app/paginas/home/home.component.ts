@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherapiService } from '../../service/weather-api/weatherapi.service';
+import { GeocodingApiService } from '../../service/geocoding-api/geocoding-api.service';
 import { HeaderComponent } from '../../components/header/header.component';
 import { CurrentWeatherComponent } from '../../components/current-weather/current-weather.component';
 import { LoadingStateComponent } from '../../components/loading-state/loading-state.component';
@@ -17,7 +18,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private weatherService: WeatherapiService){}
+  constructor(private weatherService: WeatherapiService, private geocodingService: GeocodingApiService){}
 
   city = '';
   temperature?: number;
@@ -27,14 +28,18 @@ export class HomeComponent implements OnInit {
   isDay?: number;
   feelsLike?: number;
 
+  searchResult?: any[];
+
   previsaoSemanal?: any[];
   previsaoDiaria?: any[];
   horaAtual = new Date();
   
 
   ngOnInit(): void {
-    this.carregarTempo(40.7128, -74.0060);
+    this.carregarTempo(-22.90642, -43.18223);
   }
+
+
 
   carregarTempo(lat: number, long: number){
     this.weatherService.getWeather(lat, long).subscribe(

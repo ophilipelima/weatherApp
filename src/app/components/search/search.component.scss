@@ -40,3 +40,21 @@
 
 }
 
+.resultados {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+}
+
+.resultados li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.resultados li:hover {
+  background: #eee;
+}
+

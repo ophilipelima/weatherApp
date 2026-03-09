@@ -1,4 +1,11 @@
 <section class="pesquisa-container">
-    <input type="search" name="pesquisa" placeholder="Search for a place..." class="input-icon">
-    <button>Search</button>
+    <input type="search" name="pesquisa" placeholder="Search for a place..." class="input-icon" [(ngModel)]="textoDigitado" (input)="buscarCidades()">
+    <button click="search()">Search</button>
+
+    <ul *ngIf="cidades.length > 0" class="resultados">
+        <li *ngFor="let i of cidades"
+            click="selecionarCidade(i)">
+            {{i.name}}, {{i.country}}
+        </li>
+    </ul>
 </section>
