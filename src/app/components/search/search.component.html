@@ -1,11 +1,15 @@
 <section class="pesquisa-container">
-    <input type="search" name="pesquisa" placeholder="Search for a place..." class="input-icon" [(ngModel)]="textoDigitado" (input)="buscarCidades()">
-    <button click="search()">Search</button>
-
-    <ul *ngIf="cidades.length > 0" class="resultados">
+    <div class="PesquisaR">
+        <input type="search" name="pesquisa" placeholder="Search for a place..." class="input-icon" [(ngModel)]="textoDigitado" (input)="buscarCidades()">
+        <div class="resultados">
+        <ul *ngIf="cidades.length > 0" class="cidade">
         <li *ngFor="let i of cidades"
-            click="selecionarCidade(i)">
+            (click)="selecionarCidade(i)">
             {{i.name}}, {{i.country}}
         </li>
     </ul>
+    </div>
+    </div>
+    <button (click)="search()">Search</button>
+    
 </section>

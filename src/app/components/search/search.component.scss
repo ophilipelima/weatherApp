@@ -2,12 +2,18 @@
     font-family: 'bgbold';
 }
 
+.pesquisaR{
+    // position: absolute;
+    width: 365px;
+}
+
 .pesquisa-container{
     display: flex;
     gap: 7px;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+    margin-bottom: 40px;
 }
 
 .input-icon{
@@ -40,21 +46,31 @@
 
 }
 
-.resultados {
-  position: absolute;
-  background: white;
-  border: 1px solid #ccc;
-  width: 100%;
-  list-style: none;
-  padding: 0;
+.resultados{
+    // position: absolute;
+    width: 100%;
+    // top: 100%;
+    // left: 0;
+    // z-index: 1000;
+    // z-index: 9999;
 }
 
-.resultados li {
+.cidade {
+  background: white;
+  border: 1px solid #ccc;
+  width: 365px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.cidade li {
   padding: 8px;
   cursor: pointer;
 }
 
-.resultados li:hover {
+.cidade li:hover {
   background: #eee;
 }
 

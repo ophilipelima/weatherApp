@@ -11,14 +11,9 @@ export class GeocodingApiService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = 'https://geocoding-api.open-meteo.com/v1/search';
+  private apiUrl = 'https://geocoding-api.open-meteo.com/v1/search?name=';
 
-  get(name: string):Observable<any>{
-    return this.http.get(this.apiUrl,{
-      params: {
-        name: `${this.nomeLugar}`,
-        language: 'pt'
-      }
-    });
+  get(cidade: string):Observable<any>{
+    return this.http.get(`${this.apiUrl}${cidade}&count=5`)
   }
 }

@@ -1,7 +1,6 @@
-import { Component, Output} from '@angular/core';
+import { Component, EventEmitter, Output} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GeocodingApiService } from '../../service/geocoding-api/geocoding-api.service';
-import { WeatherapiService } from '../../service/weather-api/weatherapi.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,25 +12,29 @@ import { CommonModule } from '@angular/common';
 })
 export class SearchComponent {
 
-  constructor(private geocodingService: GeocodingApiService, private weatherService: WeatherapiService){}
+  constructor(private geocodingService: GeocodingApiService){}
+
+  @Output() cidadeSelecionada = new EventEmitter<any>();
 
   textoDigitado: string = '';
   campoSelecionado!:  any;
-  cidades!: any[];
+  cidades: any[] = [];
 
 
-  buscarCidades(){
+buscarCidades(){
     this.geocodingService.get(this.textoDigitado).subscribe(res =>{
-      this.cidades = res;
+      this.cidades = res.results;
+      console.log("Resposta API:", res);
     })
   }
 
 selecionarCidade(cidade: any){
   this.campoSelecionado = cidade;
-  this.textoDigitado = cidade;
+  this.textoDigitado = cidade.name;
+  this.cidades = [];
 }
   search(){
-    this.weatherService.getWeather(this.campoSelecionado.latitude, this.campoSelecionado.longitude);
+    this.cidadeSelecionada.emit(this.campoSelecionado)
   }
 
 } 

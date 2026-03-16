@@ -6,13 +6,14 @@ import { CurrentWeatherComponent } from '../../components/current-weather/curren
 import { LoadingStateComponent } from '../../components/loading-state/loading-state.component';
 import { DailyForecastComponent } from '../../components/daily-forecast/daily-forecast.component';
 import { HourlyForecastComponent } from '../../components/hourly-forecast/hourly-forecast.component';
+import { SearchComponent } from '../../components/search/search.component';
 import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, CurrentWeatherComponent, LoadingStateComponent, DailyForecastComponent, CommonModule, HourlyForecastComponent],
+  imports: [HeaderComponent, CurrentWeatherComponent, LoadingStateComponent, DailyForecastComponent, CommonModule, HourlyForecastComponent, SearchComponent],
   templateUrl: './home.component.html',   
   styleUrl: './home.component.scss'
 })
@@ -36,13 +37,13 @@ export class HomeComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.carregarTempo(-22.90642, -43.18223);
+    this.carregarTempo(-22.90642, -43.18223, 'São Paulo, Brasil');
   }
 
 
 
-  carregarTempo(lat: number, long: number){
-    this.weatherService.getWeather(lat, long).subscribe(
+  carregarTempo(lat: number, long: number, name: string){
+    this.weatherService.getWeather(lat, long, name).subscribe(
       {
         next: (resposta) => {
         this.temperature = Math.round(resposta[1].current?.temperature_2m);
@@ -51,7 +52,9 @@ export class HomeComponent implements OnInit {
         this.precipitation = resposta[1].current?.precipitation;
         this.isDay = resposta[1].current?.is_day;
         this.city = resposta[1].timezone;
+        this.city = name;
         this.feelsLike = Math.round(resposta[1].current?.apparent_temperature);
+        
         
         this.previsaoSemanal = resposta[1].daily?.time.map((data: string, index: number) => {
           
